@@ -1,0 +1,27 @@
+<!--Server Sent Events Demo Code
+	Achin Kulshrestha -->
+<html>
+	<script type="text/javascript">
+		//192.168.204.1
+		//10.140.6.155
+		//sandbox="allow-scripts"
+		if (!!window.EventSource) {
+			var source = new EventSource('http://10.252.241.81/sse/EventStream.php');
+			source.addEventListener('message', function(e) {  console.log(e.data);	}, false);
+
+			source.addEventListener('open', function(e) { console.log("Opened the connection");}, false);
+
+			source.addEventListener('error', function(e) {
+			  if (e.readyState == EventSource.CLOSED) {
+				// Connection was closed.
+			  }
+			}, false);
+		} else {
+			alert("window.EventSource is not supported");
+		}
+	</script>
+	<body>
+
+	</body>
+
+</html>
